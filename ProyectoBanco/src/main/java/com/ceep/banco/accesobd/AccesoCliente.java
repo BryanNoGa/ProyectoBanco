@@ -200,7 +200,7 @@ public class AccesoCliente {
     }
     
     
-    public int actualizar(Cliente cliente, int nuevaPass) throws SQLException {
+    public int actualizarPassword(int idCliente, int nuevaPass) throws SQLException {
         
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -211,7 +211,7 @@ public class AccesoCliente {
             stmt = conn.prepareStatement(SQL_UPDATE);
             
             stmt.setInt(1, nuevaPass);
-            stmt.setInt(2, cliente.getIdUsuario());
+            stmt.setInt(2, idCliente);
             
             registros = stmt.executeUpdate();
             

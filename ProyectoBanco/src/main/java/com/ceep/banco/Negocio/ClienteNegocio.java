@@ -47,7 +47,6 @@ public class ClienteNegocio {
                     opcion = ent.nextInt();
                     switch(opcion){
                         case 1:
-                            while(disp){
                                 ent.nextLine();
                                 System.out.println("INTRODUZCA EL DOCUMENTO DE IDENTIDAD DEBE CONTENER 9 DIGITOS");
                                 docIdentidad = ent.nextLine();
@@ -77,7 +76,10 @@ public class ClienteNegocio {
                                 }
                                 ent.nextLine();
                                 disp = verificarDocIden(docIdentidad);
-                            }
+                                if(disp){
+                                    break;
+                                }
+                            
                         System.out.println("MUCHAS GRACIAS POR ESCOGERNOS COMO SU NUEVO BANCO DE CONFIANZA");
                         System.out.println("\n EN NUESTRO BANCO PUEDES ABRIR TU CUENTA SIN ENTRADA PERO SI DESEAS AGREGAR \nDINERO POR FAVOR"
                                 + "INDICALO ACONTINUACIÓN EN CASO CONTRARIO INTRODUCE EL MONTO 0:");
@@ -107,6 +109,7 @@ public class ClienteNegocio {
                  existe = false;
             }else {
                 System.out.println("ESTE DOCUMENTO DE INDENTIDAD YA TIENE CUENTA EN NUESTRO BANCO");
+                existe = true;
             }
         }
         
@@ -157,6 +160,7 @@ public class ClienteNegocio {
     
     public void menuCliente(String docIdentidad)throws SQLException{
         int opcion;
+        int nuevaPass = 0;
         Scanner menu = new Scanner(System.in);
         while(true){
             System.out.println("=====================================================================================================");
@@ -167,6 +171,7 @@ public class ClienteNegocio {
             System.out.println("\t3.- Ver mis movimientos.");
             System.out.println("\t4.- Realizar una transacción.");
             System.out.println("\t5.- Pedir un prestamo.");
+            System.out.println("\t6.- Cambiar contraseña.");
             System.out.println("\t0.- Cerrar sesión.");
             System.out.println("\tElige una opcion");
         opcion = menu.nextInt();
@@ -194,6 +199,18 @@ public class ClienteNegocio {
                         + "TIENES QUE DECIRNOS CUENTO QUIERES Y SE TE RESPONDEREMOS LO ANTES POSIBLE");
                 prestamo.solicitarPrestamo(conseguirIdCliente(docIdentidad));
                 break;
+            case 6:
+                System.out.println("PARA CAMBIAR LA CONTRASEÑA SIGA LAS INTRUCCIONES PORFAVOR");
+                System.out.println("Por favor escriba la nueva contraseña.");
+                nuevaPass = menu.nextInt();
+                if(nuevaPass < 1000){
+                    System.out.println("La contraseña debe contener 4 digitos como minimo");
+                    break;
+                }else {
+                    datos.actualizarPassword(conseguirIdCliente(docIdentidad), nuevaPass);
+                    System.out.println("\nCONTRASEÑA CAMBIADA");
+                    break;
+                }
             case 0:
                 System.out.println("Gracias por utilizar la aplicación");
                 return;
