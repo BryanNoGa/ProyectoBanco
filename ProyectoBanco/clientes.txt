@@ -1,0 +1,6 @@
+16;A99216841;Carlos;Novoa;CaNo@gmail.com;Calle San Carlos 22;16-10-1998
+17;A98732165;Mayda;De la Oz;Ozmay@gmail.com;Calle andrade 56;25-06-1995
+18;A6592542;Marcos;Bonaparte;bonMa@gmail.com;calle jose montalvo 45;01-01-1990
+19;A56901235;Maria;Morales;MariMor@gmail.com;calle bonet 45;02-10-1991
+20;A60025498;Magnolia;Otero;oteMag@gmail.com;calle puber 57;06-06-1989
+21;A61935712;Laura;Montez;laumon@gmail.com;calle bodega 89;08-08-1995
